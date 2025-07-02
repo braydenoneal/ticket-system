@@ -1,0 +1,23 @@
+{
+  "name": "tickets",
+  "description": "Ticket System",
+  "version": "0.0.0",
+  "author": "Brayden O'Neal",
+  "license": "GPL-3.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/pg": "^8.15.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
