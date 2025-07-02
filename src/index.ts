@@ -1,20 +1,35 @@
 import express from 'express'
-import 'dotenv/config'
-import * as process from 'node:process'
 import { Client } from 'pg'
+import 'dotenv/config'
 
 const app = express()
 const port = 3000
 
 const client = new Client(process.env.DATABASE_URL)
 await client.connect()
-// await client.end()
+await client.query('set schema \'tickets\'')
 
 app.get('/', async (_, res) => {
-    const data = await client.query("select * from tickets.user")
+    const data = await client.query('select * from "user"')
     res.send(`Hello world: ${data.rows[0].first_name}`)
 })
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`)
+})
+
+const close = () => {
+    server.close(async () => {
+        console.log('Closing server')
+        await client.end()
+        process.exit(0)
+    })
+}
+
+process.on('SIGTERM', () => {
+    close()
+})
+
+process.on('SIGINT', () => {
+    close()
 })
