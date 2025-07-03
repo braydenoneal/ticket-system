@@ -1,6 +1,9 @@
 import custom_schema from '@/api/user/custom_schema/custom_schema.js'
 import password_reset from '@/api/user/password_reset/password_reset.js'
+import queue from '@/api/user/queue/queue.js'
 import session from '@/api/user/session/session.js'
+import team from '@/api/user/team/team.js'
+import ticket from '@/api/user/ticket/ticket.js'
 import db from '@/db.js'
 import express from 'express'
 
@@ -28,7 +31,10 @@ user.delete('/:id', (req, res) => {
 })
 
 user.use('/custom_schema', custom_schema)
-user.use('/session', session)
+user.use('/', session)
 user.use('/password_reset', password_reset)
+user.use('/', team)
+user.use('/', ticket)
+user.use('/queue', queue)
 
 export default user

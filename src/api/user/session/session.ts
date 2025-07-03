@@ -2,15 +2,15 @@ import express from 'express'
 
 const session = express.Router()
 
-session.post('/:user_id', (req, res) => {
+session.post('/:user_id/session', (req, res) => {
     res.send(req.headers)
 })
 
-session.get('/:user_id/:id', (req, res) => {
+session.get('/:user_id/session/:id', (req, res) => {
     res.send(req.headers)
 })
 
-session.delete('/:user_id/:id', (req, res) => {
+session.delete('/:user_id/session/:id', (req, res) => {
     res.send(req.headers)
 })
 
