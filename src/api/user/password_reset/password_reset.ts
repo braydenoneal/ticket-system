@@ -2,7 +2,7 @@ import express from 'express'
 
 const password_reset = express.Router()
 
-password_reset.post('/:user_id', (req, res) => {
+password_reset.post('/:user_id/password_reset', (req, res) => {
     res.send(req.headers)
 })
 

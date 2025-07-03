@@ -32,9 +32,9 @@ user.delete('/:id', (req, res) => {
 
 user.use('/custom_schema', custom_schema)
 user.use('/', session)
-user.use('/password_reset', password_reset)
+user.use('/', password_reset)
 user.use('/', team)
 user.use('/', ticket)
-user.use('/queue', queue)
+user.use('/', queue)
 
 export default user
